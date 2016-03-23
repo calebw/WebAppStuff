@@ -1,0 +1,4 @@
+{
+	"proxy": "http://proxy.wellsfargo.com:8080",
+	"strictSSL": false
+}
