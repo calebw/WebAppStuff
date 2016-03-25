@@ -1,7 +1,10 @@
 "use strict"
 
-var gulp = require('gulp');
-var connect = require('gulp-connect'),
+var gulp = require('gulp'),
+    connect = require('gulp-connect'),
+    gutil = require('gulp-util'),
+    sass = require('gulp-sass'),
+    htmlreplace = require('gulp-html-replace'),
     open = require('gulp-open'),
     typescript = require('gulp-typescript'),
     concat = require('gulp-concat'),
@@ -12,16 +15,14 @@ var connect = require('gulp-connect'),
     browserify = require('browserify'),
     tsify = require('tsify'),
     source = require('vinyl-source-stream'),
-    buffer = require('vinyl-buffer'),
-    exorcist = require('exorcist');;
+    buffer = require('vinyl-buffer');
 
 var paths = {port:3000,devBaseUrl:'http://localhost',
 	tscripts: 'src/**/*.ts',
 	html: 'src/*.html',
-	outscripts: 'dist/js',
-	mainJs: 'jssrc/Test.js',
-	mainTs: 'src/Test.ts',
-	jsSrc: 'jssrc'
+	scss: 'src/*.scss',
+	out: 'dist',
+	mainTs: 'src/Test.ts'
 };
 
 gulp.task('connect',function(){
@@ -38,27 +39,51 @@ gulp.task('clean',function(){
 
 gulp.task('html',function(){
 	return gulp.src(paths.html)
-		.pipe(gulp.dest('dist'));
+		.pipe(gutil.env.TYPE==='prod' ? htmlreplace({'js':'js/all.min.js'}) : gutil.noop())
+		.pipe(gulp.dest(paths.out));
+});
+
+gulp.task('scss', function(){
+	return gulp.src(paths.scss)
+		.pipe(sass().on('error',sass.logError))
+		.pipe(concat('all.css'))
+		.pipe(gulp.dest(paths.out+'/css'));
 });
 
 gulp.task('scripts', function(){
-	return browserify(paths.mainTs,{debug: true})
+	if(gutil.env.TYPE=='prod'){
+		return browserify(paths.mainTs,{debug: false})
 		.on('error',console.error.bind(console))
 		.plugin(tsify)
 		.bundle()
 		.pipe(source('all.js'))
 		.pipe(buffer())
-		.pipe(sourcemaps.init({loadMaps: true}))
-		.pipe(gulp.dest(paths.outscripts))
+		//.pipe(sourcemaps.init({loadMaps: true}))
+		.pipe(gulp.dest(paths.out+'/js'))
 		.pipe(rename('all.min.js'))
 		.pipe(uglify())
-		.pipe(sourcemaps.write())
-		.pipe(gulp.dest(paths.outscripts));
+		//.pipe(sourcemaps.write('./maps'))
+		.pipe(gulp.dest(paths.out+'/js'));
+	} else {
+		return browserify(paths.mainTs,{debug: true})
+		.on('error',console.error.bind(console))
+		.plugin(tsify)
+		.bundle()
+		.pipe(source('all.js'))
+		.pipe(buffer())
+		//.pipe(sourcemaps.init({loadMaps: true}))
+		.pipe(gulp.dest(paths.out+'/js'));
+		//.pipe(rename('all.min.js'))
+		//.pipe(uglify())
+		//.pipe(sourcemaps.write('./maps'))
+		//.pipe(gulp.dest(paths.out+'/js'));
+	}
 });
 
 gulp.task('watch', function(){
 	gulp.watch(paths.tscripts, ['scripts']);
 	gulp.watch(paths.html, ['html']);
+	gulp.watch(paths.scss, ['scss']);
 });
 
-gulp.task('default', ['watch', 'scripts', 'html', 'open']);
+gulp.task('default', ['watch', 'scripts', 'html', 'scss','open']);
