@@ -8,14 +8,13 @@ db.once('open', function(){
 	var BudgetEntrySchema = new Schema({
 		name: String,
 		type: String,
-		cost: Number,
-		mixed: Schema.Types.Mixed
+		cost: {type: Number, required: true}
 	});
 
-	BudgetEntrySchema.methods.getCost = function(cb){
+	/*BudgetEntrySchema.methods.getCost = function(cb){
 		console.log("In logCost. name: "+this.name);
 		return this.model('BudgetEntry').findOne({name: this.name},{cost: 1},cb);
-	};
+	};*/
 
 	//NOTES: You can apply 'indexing' to Schema records that are frequently used.
 	////Also turn off autoIndex in Prod
@@ -27,10 +26,9 @@ db.once('open', function(){
 	var BudgetEntry = mongoose.model('BudgetEntry',BudgetEntrySchema);
 
 	var rent = new BudgetEntry({
-		name: 'Rent',
-		type: 'Rent',
-		cost: 600,
-		mixed: {what: {ever: 'mix', other: [1,2]}}
+		name: 'RTest',
+		type: 'Test',
+		cost: 200
 	});
 	/*rent.getCost(function(err,data){
 		console.log('In CB');
@@ -41,5 +39,6 @@ db.once('open', function(){
 	rent.save(function(err,rent){
 		if(err) return console.error(err);
 		console.log('Save Success: '+rent.name);
+		console.log(JSON.stringify(rent));
 	});
 });

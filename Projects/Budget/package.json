@@ -1,0 +1,33 @@
+{
+  "name": "budget",
+  "version": "1.0.0",
+  "description": "Test Budget App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.3",
+    "angular2": "^2.0.0-beta.13",
+    "browserify": "^13.0.0",
+    "del": "^2.2.0",
+    "es6-shim": "^0.35.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^3.2.2",
+    "gulp-open": "^1.0.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-typescript": "^2.12.2",
+    "mongoose": "^4.4.11",
+    "ntypescript": "^1.201604050104.1",
+    "reflect-metadata": "^0.1.2",
+    "rxjs": "^5.0.0-beta.2",
+    "systemjs": "^0.19.25",
+    "tsify": "^0.14.2",
+    "typescript": "^1.8.9",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "zone.js": "^0.6.9"
+  }
+}
