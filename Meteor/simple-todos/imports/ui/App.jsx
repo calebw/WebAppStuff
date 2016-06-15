@@ -18,12 +18,7 @@ class App extends Component {
   handleSubmit(event){
   	event.preventDefault();
   	const text = ReactDom.findDOMNode(this.refs.textInput).value.trim();
-  	Tasks.insert({
-  		text,
-  		createdAt: new Date(),
-  		owner: Meteor.userId(),
-  		username: Meteor.user().username
-  	});
+  	Meteor.call('tasks.insert', text);
   	ReactDom.findDOMNode(this.refs.textInput).value='';
   }
 
@@ -76,7 +71,7 @@ class App extends Component {
 App.propTypes = {
 	tasks: PropTypes.array.isRequired,
 	incompleteCount: PropTypes.number.isRequired,
-	currentUser.PropTypes.object
+	currentUser: PropTypes.object
 };
 
 export default createContainer(() => {
