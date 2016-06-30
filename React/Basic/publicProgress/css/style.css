@@ -1,0 +1,41 @@
+.react-progress-bar .labels {
+  *zoom: 1; }
+  .react-progress-bar .labels:before, .react-progress-bar .labels:after {
+    display: table;
+    content: ""; }
+  .react-progress-bar .labels:after {
+    clear: both; }
+
+.react-progress-bar {
+  border: 1px solid #eee;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 3px; }
+  .react-progress-bar .labels {
+    font-weight: bold;
+    color: #888;
+    margin-bottom: 10px;
+    -webkit-font-smoothing: antialiased; }
+  .react-progress-bar .completion {
+    float: left; }
+  .react-progress-bar .percentage {
+    float: right; }
+  .react-progress-bar .bar {
+    background: #eee;
+    height: 10px;
+    border-radius: 30px; }
+  .react-progress-bar .bar .fill {
+    height: 10px;
+    background: #aaa;
+    border-radius: 30px;
+    transition: all 0.8s cubic-bezier(0.77, 0, 0.175, 1) 0.1s; }
+
+.react-progress-bar.danger .bar .fill {
+  background: #da5347; }
+
+.react-progress-bar.warning .bar .fill {
+  background: #FFCF50; }
+
+.react-progress-bar.ok .bar .fill {
+  background: #75BA50; }
+
