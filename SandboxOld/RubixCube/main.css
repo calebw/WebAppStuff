@@ -1,0 +1,33 @@
+body {
+    width: 100%;
+    height:auto;
+}
+#parent {
+    padding-left: 2em;
+}
+#parent > div {
+    display: inline-block;
+    background-color: #7d7d7d;
+    width: 210px;
+    height: 210px;
+}
+table {
+    border-spacing: 0;
+}
+tr {
+    padding:0;
+    margin:0;
+}
+td {
+    border: solid black 1px;
+    width: 70px;
+    height: 68px;
+    padding:0;
+    margin:0;
+}
+#top {
+    margin-left: 6em;
+}
+#front {
+    margin-left:3em;
+}

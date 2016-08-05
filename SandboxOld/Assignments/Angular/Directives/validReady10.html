@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <title>AngularJS Demo</title>
+    <link href="bootstrap.css" rel="stylesheet"/>
+    <link href="bootstrap-theme.css" rel="stylesheet">
+    <script src="angular.js"></script>
+    <script>
+        var myApp = angular.module("exampleApp",[])
+                .controller("defaultCtrl",function($scope){
+                    $scope.todos=[
+                        {id:100,place:"Store",action:"Get Groceries",complete:false},
+                        {id:200,place:"Home",action:"Call Plumber",complete:true},
+                        {id:300,place:"Store",action:"Buy Shoes",complete:false}
+                    ];
+                });
+    </script>
+</head>
+<body>
+<div id="todoPanel" class="panel" ng-controller="defaultCtrl">
+    <form name="myForm" novalidate>
+        <div class="well">
+            <div class="form-group">
+                <label>Selevt an Action</label>
+                <select ng-model="selectValue" ng-options="item.action group by item.place for item in todos">
+                    <option value="">(Pick One)</option>   <!-- Now groups by place to complete-->
+                </select>
+                </div>
+            </div>
+            <div class="well">
+                <p>Selected: {{selectValue || 'None'}}</p> <!--Display Obj Selected -->
+            </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+Proper Structure based on Johnpapa's Angular Style Guide
+<div ng-controller="SomeCtrl as some"> <!--Use 'as' for readability and efficiency-->
+    {{some.data}}
+    <button ng-click="some.log('Logged?');">Log</button>
+</div>
+<div ng-controller="DataCtrl as data">
+    {{data.data}}
+</div>
+</body>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/angular/angular.min.js"></script>
+<script src="app.js"></script>
+<script src="SomeCtrl.js"></script>
+<script src="LoggerFact.js"></script>
+<script src="DataCtrl.js"></script>
+<script src="DataFact.js"></script>
+</html>

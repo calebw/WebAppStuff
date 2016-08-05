@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <title>AngularJS Demo</title>
+    <link href="bootstrap.css" rel="stylesheet"/>
+    <link href="bootstrap-theme.css" rel="stylesheet">
+    <script src="angular.js"></script>
+    <script>
+        var myApp = angular.module("exampleApp",[])
+                .controller("defaultCtrl",function($scope){
+                    $scope.todos = [
+                        {action:"Get Groceries",complete:false},
+                        {action:"Call Plumber",complete:false},
+                        {action:"Buy Shoes",complete:false},
+                        {action:"Buy Flowers",complete:false},
+                        {action:"Call Family",complete:false}];
+                });
+    </script>
+</head>
+<body>
+<div id="todoPanel" class="panel" ng-controller="defaultCtrl">
+    <h3 class="panel-header">To Do List</h3>
+    <div class="well">
+        <div>The first item is: {{todos[0].action}}</div>
+        <div>The second item is: {{todos[1].action}}</div>
+    </div>
+    <div class="form-group well">
+        <label for="firstItem">Set First Item: </label>
+        <input name="firstItem" class="form-control" ng-model="todos[0].action"/><br>
+        <label for="secondItem">Set Second Item: </label>
+        <input name="secondItem" class="form-control" ng-model="todos[1].action"/>
+    </div>
+</div>
+</body>
+</html>

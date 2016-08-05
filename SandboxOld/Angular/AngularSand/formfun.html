@@ -1,0 +1,37 @@
+<div>
+    <span>Validation Exmaples: </span>
+    <form class="cssforms" name="form">
+        <label>Basic CSS Validation Email: </label>
+        <input id="fstform" type="email" name="uEmail" ng-model="data.fsttext" required />
+        <span ng-show="form.uEmail.$touched">    <!--Must use <form> and 'name' attrs for this-->
+            <span ng-show="form.uEmail.$error.email">This is not valid</span>
+        </span>
+        <br>
+        <label>Updates Binding After Blur: </label>
+        <input id="scdform" type="text" ng-model="data.scdtext" ng-model-options="{updateOn:'blur'}">
+        <span>{{data.scdtext}}</span>
+        <br>
+        <label>Updates Binding After Timeset: </label>
+        <input id="trdform" type="text" ng-model="data.trdtext" ng-model-options="{debounce:300}">
+        <span>{{data.trdtext}}</span>
+        <br>
+        <label>Custom Validation with Async: </label>
+        <input id="frthform" type="text" ng-model="data.frthtext" name="custInp" uservalid />
+        <span ng-show="form.custInp.$pending.uservalid">Checking availability...</span>
+        <span ng-show="form.custInp.$error.uservalid">Username taken</span>
+    </form>
+<style type="text/css">
+    .cssforms #fstform.ng-invalid.ng-touched {  /*clicked on(and off) and invalid*/
+        background-color: #ff6b6d;
+    }
+    .cssforms #fstform.ng-valid.ng-touched {  /*clicked on and valid*/
+        background-color: #94f784;
+    }
+    .cssforms #fstform.ng-pristine {  /*not typed on*/
+        border: solid 1px blue;
+    }
+    .cssforms #fstform.ng-dirty {  /*typed on*/
+        border: solid 1px yellow;
+    }
+</style>
+</div>

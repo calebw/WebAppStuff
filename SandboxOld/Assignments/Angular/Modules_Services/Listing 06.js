@@ -1,0 +1,13 @@
+/**
+ * Created by Caleb.Whitaker on 7/27/2015.
+ */
+
+angular.module("customServices",[])
+.factory("logService", function (){
+    var messageCount = 0;
+    return {
+        log: function(msg){
+          console.log("(LOG + "+messageCount++ +") "+msg);
+        }
+    };
+});

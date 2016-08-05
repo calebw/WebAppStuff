@@ -1,0 +1,43 @@
+<html ng-app="App">
+<head></head>
+
+<body>
+<div>On Index</div>
+<div ng-controller="mainCtrl">
+    <span id="message" ng-bind="data.data"></span>
+</div>
+<div ng-controller="twiceCtrl">
+    <span id="message2" ng-bind="data.data"></span>
+</div>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/angular/angular.min.js"></script>
+<script src="vendor/socket.io/socket.io.js"></script>
+<script>
+    angular.module("App",[])
+        .controller('mainCtrl',function($scope){
+            $scope.data = {data:"Out"};
+            var socket = io();
+            socket.on('message', function(msg){
+                console.log(msg);
+                $scope.data = msg;
+                $scope.$apply();
+            });
+            socket.on('cast',function(msg){
+                console.log(msg);
+            });
+        })
+        .controller('twiceCtrl',function($scope){
+            $scope.data = {data:"Out"};
+            var socket = io();
+            socket.on('message', function(msg){
+                console.log("C2: "+msg.data);
+                $scope.data = msg;
+                $scope.$apply();
+            });
+            socket.on('cast',function(msg){
+                console.log("C2: "+msg);
+            });
+        });
+</script>
+</body>
+</html>

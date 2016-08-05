@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+<body>
+<div ng-controller="MainCtrl">
+    <label>File:<input type="text" ng-model="fileName"/></label>
+    <button ng-click="load(fileName);">Load</button>
+    <div>
+        {{data.data}}
+    </div>
+    <div>
+        {{data.data.text}}
+    </div>
+</div>
+
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/angular/angular.min.js"></script>
+<script src="js/AppModule.js"></script>
+<script src="js/RequestFact.js"></script>
+<script src="js/MainCtrl.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Angular Assignment</title>
+    <link href="style/main.css" rel="stylesheet">
+</head>
+<body>
+<div class="detailP">
+<div class="navButtons">
+    <div id="leftNav" class="navButton" ng-click="switchArtist(false)"><</div>
+    <div id="rightNav" class="navButton" ng-click="switchArtist(true)">></div>
+</div>
+<h2 class="name">{{currentArtist.name}}</h2>
+<h3 class="reknown">{{currentArtist.reknown}}</h3>
+<div class="bio">
+<img class="bioPic" src="images/{{currentArtist.shortname}}_tn.jpg">
+<p>{{currentArtist.bio}}</p>
+</div>
+<br>
+<a href="#/search"><< Back to Search</a>
+</div>
+</body>
+</html>

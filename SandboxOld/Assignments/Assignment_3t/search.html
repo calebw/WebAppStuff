@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+</head>
+<body>
+<div class="searchP">
+<div class="options">
+    <h2 class="head">Artist Directory</h2>
+    <input class="search" type="text" ng-model="search"/><br/>
+    <label class="txt">by: </label><select class="select" ng-model="optSort">
+        <option value="name">Name</option>
+        <option value="reknown">Reknown</option>
+    </select>
+    <input type="radio" ng-model="modeSort" value="asc"><label class="txt">ascending</label>
+    <input type="radio" ng-model="modeSort" value="desc"><label class="txt">descending</label>
+</div>
+<div class="tableData">
+<table>
+    <tr class="rows" ng-repeat="artist in artists | filter:search | orderBy:optSort | orderBy:(modeSort=='asc' ? '' : '-')+optSort" >
+        <td><a href="#/details/{{artists.indexOf(artist)}}"><img class="pic" src="images/{{artist.shortname}}_tn.jpg"></a></td>
+        <td><span class="name">{{artist.name}}</span><br><span class="reknown">{{artist.reknown}}</span></td>
+    </tr>
+</table>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+<head>
+    <meta charset="UTF-8">
+    <title>Rubix Cube</title>
+    <link href="main.css" rel="stylesheet"/>
+</head>
+<body ng-controller="populateCtrl">
+<div id="parent">
+    <div ng-repeat="(id, vals) in cubeMap" id="{{id}}">
+
+    </div>
+    <!--
+    <div id="top"></div>
+    <div id="bottom">
+        <table>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <br/>
+    <div id="left"></div>
+    <div id="back"></div>
+    <div id="right"></div>
+    <div id="front"></div>
+    -->
+</div>
+</body>
+<script src="jquery/jquery.min.js"></script>
+<script src="angular/angular.min.js"></script>
+<script src="main.js"></script>
+</html>

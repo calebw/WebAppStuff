@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+<input id="text" type="text">
+<button id="clickthis">Emit</button>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/socket.io/socket.io.js"></script>
+<script>
+    var socket = io();
+    socket.on('cast',function(msg){
+        console.log(msg);
+    });
+    $('#clickthis').click(function(){
+        console.log("in click");
+        socket.emit("cast",$('#text').val());
+    });
+</script>
+</body>
+</html>

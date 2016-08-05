@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <title>AngularJS Demo</title>
+    <link href="bootstrap.css" rel="stylesheet"/>
+    <link href="bootstrap-theme.css" rel="stylesheet">
+    <script src="angular.js"></script>
+    <script>
+        var myApp = angular.module("exampleApp",[])
+                .controller("defaultCtrl",function($scope){
+                    $scope.todos = [
+                        {action:"Get Groceries",complete:false},
+                        {action:"Call Plumber",complete:true},
+                        {action:"Buy Shoes",complete:false},
+                        {action:"Buy Flowers",complete:false},
+                        {action:"Call Family",complete:false}];
+                });
+    </script>
+    <style>
+        td > :first-child{font-weight:bold}
+    </style>
+</head>
+<body>
+<div id="todoPanel" class="panel" ng-controller="defaultCtrl">
+    <h3 class="panel-header">To Do List</h3>
+
+    <div class="checkbox well">
+        <label>
+            <input type="checkbox" ng-model="todos[2].complete">
+            Item 3 is Complete
+        </label>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Action</th>
+                <th>Done</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in todos | filter: {complete:'false'}"> <!-- Display when False-->
+                <td>{{$index+1}}</td>
+                <td>{{item.action}}</td>
+                <td>{{item.complete}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

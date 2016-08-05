@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="helloApp">
+<head>
+    <title>AngularJS Demo</title>
+    <link href="bootstrap.css" rel="stylesheet"/>
+    <link href="bootstrap-theme.css" rel="stylesheet">
+    <script src="angular.js"></script>
+    <script>
+        var myApp = angular.module("helloApp",[]);
+        myApp.controller("helloCtrl",function($scope){
+            $scope.hello = "Hello From Angular";
+        });
+    </script>
+</head>
+<body>
+<div class="panel" ng-controller="helloCtrl">
+    <div class="page-header">
+        <h3>AngularJS App</h3>
+    </div>
+    <h4>{{hello}}</h4>
+</div>
+</body>
+</html>

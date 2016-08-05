@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <title>AngularJS Demo</title>
+    <link href="bootstrap.css" rel="stylesheet"/>
+    <link href="bootstrap-theme.css" rel="stylesheet">
+    <script src="angular.js"></script>
+    <script>
+        var myApp = angular.module("exampleApp",[])
+                .controller("defaultCtrl",function($scope){
+                    $scope.todos = [
+                        {action:"Get Groceries",complete:false},
+                        {action:"Call Plumber",complete:true},
+                        {action:"Buy Shoes",complete:false},
+                        {action:"Buy Flowers",complete:false},
+                        {action:"Call Family",complete:false}];
+                    $scope.viewFile = function(){
+                        return $scope.showList ? "listView.html" : "tableView.html";
+                    };
+                    $scope.reportChange = function(){
+                        console.log("Displayed content: "+$scope.viewFile());
+                    };
+                });
+    </script>
+
+</head>
+<body>
+<div id="todoPanel" class="panel" ng-controller="defaultCtrl">
+    <h3 class="panel-header">To Do List</h3>
+    <div class="well">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" ng-model="showList"/>
+                Use the List View
+            </label>
+        </div>
+    </div>
+    <ng-include src="viewFile()" onload="reportChange()"></ng-include>
+</div>
+</body>
+</html>

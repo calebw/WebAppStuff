@@ -1,0 +1,35 @@
+/*SVG Test*/
+
+@keyframes Rchange {
+    0%{
+        fill: #ff0000;
+    }
+    100%{
+        fill: #17ff00;
+    }
+
+}
+
+#Rcirc {
+    animation: Rchange 4s infinite;
+}
+
+@keyframes Gchange {
+    0%,100%{
+        fill: #000000;
+    }
+    50%{
+        fill: #0000ff;
+    }
+
+}
+
+#glass > * {
+    animation: Gchange .2s linear infinite;
+}
+
+/*Other*/
+#logo {
+    width: 70%;
+    height: auto;
+}

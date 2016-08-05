@@ -1,0 +1,11 @@
+body {
+    padding: 10px;
+}
+#layoutDivs div {
+    height: 4em;
+    padding: 0;
+    margin:0;
+    border: 1px solid #9e9e9e;
+    background-color: rgba(25, 168, 221, 0.44);
+
+}

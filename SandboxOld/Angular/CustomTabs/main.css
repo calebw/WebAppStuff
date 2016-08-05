@@ -1,0 +1,56 @@
+#svgTab-parent {
+    padding: 20px;
+    width: 30em;
+    height: auto;
+}
+#tabs {
+    padding:0;
+    margin:0;
+    display:block;
+    list-style: none;
+    overflow:hidden;
+}
+#tabs li.active svg {
+    fill: lightgray;
+}
+#tabs li {
+    position: relative;
+    display: block;
+    padding: 0;
+    margin-right:5px;
+    float: left;
+    list-style: none;
+    background-color: transparent;
+}
+#tabs li>div {
+    position: relative;
+    width:100%;
+    height:100%;
+}
+#tabs li>div>span {
+    text-align: center;
+    position: absolute;
+    z-index: 2;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+#tabs li>div svg {
+    fill:red;
+    stroke-width:1;
+    position:relative;
+    display: block;
+    z-index: 1;
+
+}
+#tabContent {
+    background-color: lightgray;
+}
+#tabContent>.tab-pane {
+    display:none;
+}
+#tabContent>.active {
+    display: block;
+    height: 20em;
+    word-wrap: break-word;
+}

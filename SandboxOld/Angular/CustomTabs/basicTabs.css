@@ -1,0 +1,23 @@
+#tabs {
+    padding:0;
+    margin:0;
+    overflow:hidden;
+}
+#tabs li.active {
+    background-color: lightgray;
+}
+#tabs li {
+    margin-right:5px;
+    float: left;
+    list-style: none;
+    background-color: grey;
+}
+#tabContent {
+    background-color: lightgray;
+}
+#tabContent>.tab-pane {
+    display:none;
+}
+#tabContent>.active {
+    display: block;
+}

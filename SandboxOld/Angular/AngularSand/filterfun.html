@@ -1,0 +1,11 @@
+<div>Filter Examples:</div>
+<button ng-click="sortRev = !sortRev;">Reverse</button>
+<ul>
+    <li ng-repeat="word in wordList | orderBy:word:sortRev">{{word}}</li>
+</ul>
+<label>Filter by:</label><input type="text" ng-model="searchF"> <!--Filtered again here-->
+<ul>
+    <li ng-repeat="word in someArrFilt | filter:searchF">{{word}}</li>
+</ul>
+<label>Custom Filter: </label> <!--Passing param to custom filter uppderfy-->
+<button ng-click="upperBool = !upperBool">Upperfy</button><span> {{textToUpper | upperfy:upperBool}}</span>

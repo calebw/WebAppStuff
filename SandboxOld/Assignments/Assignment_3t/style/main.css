@@ -1,0 +1,88 @@
+body {
+    padding-left: 4em;
+}
+table {
+    background-color: lightgoldenrodyellow;
+    border-radius: 10px;
+    padding: .2em;
+}
+.searchP {
+    width: 30%;
+    background-color: lightskyblue;
+    border-radius: 10px;
+    padding: .1em 1em 1em 1em;
+}
+.detailP {
+    width: 50%;
+    background-color: #f4e6f3;
+    border-radius: 10px;
+    padding: .8em 0 .4em 1.4em
+}
+.navButtons {
+    padding: 20px 0 0 10px;
+}
+.navButton {
+    background: #0099d4;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    color: white;
+    cursor: pointer;
+}
+.bio {
+    width: 80%;
+    font-size: 1.1em;
+}
+.options {
+    background-color: darkblue;
+    border-radius: 10px;
+    padding: 0 1em 1em 1em;
+}
+.head, .txt {
+    color: whitesmoke;
+}
+.search {
+    margin-bottom: 1em;
+    border: solid 3px #dcdcdc;
+    border-radius: 10px;
+    -moz-border-radius: 20px ;
+    outline: 0;
+    transition: box-shadow 0.3s, border 0.3s;
+
+}
+.search:focus {
+    border: solid 4px #707070;
+    box-shadow: 0 0 5px 1px #969696;
+    padding: .5em;
+}
+.rows td{
+    border-bottom: dotted 1px black;
+    padding: .3em;
+}
+.tableData {
+    width: 90%;
+    margin: 0 auto;
+}
+.name {
+    margin-bottom: 0;
+    font-size: larger;
+    font-weight: bold;
+    color: hotpink;
+}
+.reknown {
+    margin-top: 0;
+    color: #b70000;
+}
+.pic {
+     width: 50px;
+     cursor: pointer;
+     float: left;
+}
+.bioPic {
+    width: 70px;
+    float: left;
+    padding-right: .3em;
+}

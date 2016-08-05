@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<span>On Main</span>
+<div ng-controller="mainCtrl">
+    <inj-here></inj-here>
+</div>
+<br><br>
+<div ng-controller="filterCtrl">
+    <inj-filterfun></inj-filterfun>
+</div>
+<br>
+<div ng-controller="formCtrl">
+    <inj-formfun></inj-formfun>
+</div>
+<div>
+    <inj-animfun></inj-animfun>
+</div>
+<br>
+<div>More Complex Directive: </div>
+<span draggable>DagMe</span>
+
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/angular/angular.min.js"></script>
+<script src="node_modules/angular/angular-animate.min.js"></script>
+<script src="main.js"></script>
+<script src="factory.js"></script>
+<script src="filterfun.js"></script>
+<script src="formfun.js"></script>
+<script src="draggable.js"></script>
+<script src="provider.js"></script>
+</body>
+</html>

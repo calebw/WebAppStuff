@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <title>AngularJS Demo</title>
+    <link href="bootstrap.css" rel="stylesheet"/>
+    <link href="bootstrap-theme.css" rel="stylesheet">
+    <script src="angular.js"></script>
+    <script>
+        var myApp = angular.module("exampleApp",[])
+                .controller("defaultCtrl",function($scope){
+                    $scope.todos = [
+                        {action:"Get Groceries",complete:false},
+                        {action:"Call Plumber",complete:false},
+                        {action:"Buy Shoes",complete:false},
+                        {action:"Buy Flowers",complete:false},
+                        {action:"Call Family",complete:false}];
+                });
+    </script>
+</head>
+<body>
+<div id="todoPanel" class="panel" ng-controller="defaultCtrl">
+    <h3 class="panel-header">To Do List</h3>
+    <div>There are {{todos.length}} items</div> <!-- inline binding -->
+    <div>
+        There are <span ng-bind="todos.length"></span> items <!-- Another format -->
+    </div>
+    <div ng-bind-template=
+                 "First: {{todos[0].action}}. Second: {{todos[1].action}}"> <!-- Don't really need -template-->
+    </div>
+    <div ng-non-bindable> <!-- Can use brackets here -->
+        AngularJS uses {{var}} elements for templates
+    </div>
+</div>
+</body>
+</html>
