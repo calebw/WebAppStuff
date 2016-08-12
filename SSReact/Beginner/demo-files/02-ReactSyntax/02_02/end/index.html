@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  
+  <title>Hello World Example</title>
+  <head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+
+    <!-- React -->
+    <script src="https://fb.me/react-0.14.1.min.js"></script>
+    <script src="https://fb.me/react-dom-0.14.1.min.js"></script>
+    <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+
+    <style>
+
+      #example {
+        color: blue;
+        margin: 20px;
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+  
+    
+    <div id="example"></div>
+
+    <script type="text/jsx">
+ 
+      var HelloWorld = React.createClass({
+        render: function() {
+
+          return (
+                  <div>
+                    <h1>Hello {this.props.name}!</h1>
+                  </div>
+
+          );
+        }
+
+      });
+
+      React.render(<HelloWorld name="Sandy"/>, document.getElementById('example'));
+
+    </script>
+  </body>
+
+
+  </script>
+
+</html>

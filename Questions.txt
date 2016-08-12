@@ -1,0 +1,20 @@
+Heap and PermGen
+Heap(Obj Mem) has generations:
+ -Young, new
+ -Tenured, long lived
+ -Perm, permanent, classes
+GC cleans both Young and Tenured
+
+OutOfMemoryError can occur at different places:
+Heap - whole mem space too small
+Perm - Too many classes
+Array - size larger than Heap
+
+You would want @Transactional in Service Layer.
+DAO has multiple implmentations.
+
+Transaction has commit and roollback
+Can set Isolation, rather it can or cannot see uncommitted writes by others.
+
+Synchronized block in Java only allows 1 thread at a time.
+ArrayList is non-sync and can be accessed by many threads.

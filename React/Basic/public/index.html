@@ -13,10 +13,22 @@
   </head>
   <body>
     <div id="content"></div>
+	<div id="content2"></div>
     <script type="text/babel" src="scripts/example.js"></script>
     <script type="text/babel">
       // To get started with this tutorial running your own code, simply remove
       // the script tag loading scripts/example.js and start writing code here.
+	  var HelloWorld = React.createClass({
+        render: function() {
+          return (
+				<h1>Hello World!</h1>
+          );
+        }
+      });
+	  ReactDOM.render(
+		  <HelloWorld />,
+		  document.getElementById('content2')
+		);
     </script>
   </body>
 </html>

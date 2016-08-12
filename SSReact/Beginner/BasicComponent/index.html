@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <title>Hello World Example</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.1/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.1/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.16/browser.js"></script>
+    <!--<script src="https://fb.me/JSXTransformer-0.13.3.js"></script>-->
+
+  </head>
+
+  <body>
+  <div id="content"></div>
+    
+    <script type="text/babel">
+      var HelloWorld = React.createClass({
+        render: function() {
+          return (
+              <h1>Hello {this.props.name}!</h1>
+          );
+        }
+      });
+      ReactDOM.render(<HelloWorld name="Caleb" />, document.getElementById('content'));
+
+      
+
+    </script>
+  </body>
+
+</html>
+
+<!-- Can use this without type and browser
+var HelloWorld = React.createClass({
+      displayName: "HelloWorld",
+
+      render: function render() {
+
+        return React.createElement(
+          "div",
+          null,
+          React.createElement(
+            "h1",
+            null,
+            "Hello ",
+            this.props.name,
+            "!"
+          )
+        );
+      }
+
+    });
+
+    ReactDOM.render(React.createElement(HelloWorld, { name: "Caleb" }), document.getElementById('content'));
+-->
