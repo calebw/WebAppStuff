@@ -1,0 +1,12 @@
+C:\Users\U460624\WebAppStuff\DesignPatterns\VisitorPattern\DecoratorPattern\bin\Debug\DecoratorPattern.exe.config
+C:\Users\U460624\WebAppStuff\DesignPatterns\VisitorPattern\DecoratorPattern\bin\Debug\DecoratorPattern.exe
+C:\Users\U460624\WebAppStuff\DesignPatterns\VisitorPattern\DecoratorPattern\bin\Debug\DecoratorPattern.pdb
+C:\Users\U460624\WebAppStuff\DesignPatterns\VisitorPattern\DecoratorPattern\obj\Debug\DecoratorPattern.csprojResolveAssemblyReference.cache
+C:\Users\U460624\WebAppStuff\DesignPatterns\VisitorPattern\DecoratorPattern\obj\Debug\DecoratorPattern.exe
+C:\Users\U460624\WebAppStuff\DesignPatterns\VisitorPattern\DecoratorPattern\obj\Debug\DecoratorPattern.pdb
+C:\Users\U460624\WebAppStuff\AdvancedConcepts\DesignPatterns\DecoratorPattern\bin\Debug\DecoratorPattern.exe.config
+C:\Users\U460624\WebAppStuff\AdvancedConcepts\DesignPatterns\DecoratorPattern\obj\Debug\DecoratorPattern.exe
+C:\Users\U460624\WebAppStuff\AdvancedConcepts\DesignPatterns\DecoratorPattern\obj\Debug\DecoratorPattern.pdb
+C:\Users\U460624\WebAppStuff\AdvancedConcepts\DesignPatterns\DecoratorPattern\bin\Debug\DecoratorPattern.exe
+C:\Users\U460624\WebAppStuff\AdvancedConcepts\DesignPatterns\DecoratorPattern\bin\Debug\DecoratorPattern.pdb
+C:\Users\U460624\WebAppStuff\AdvancedConcepts\DesignPatterns\DecoratorPattern\obj\Debug\DecoratorPattern.csprojResolveAssemblyReference.cache
