@@ -3,3 +3,5 @@ node_module/
 node_modules
 node_module
 target/
+bin/
+obj/
