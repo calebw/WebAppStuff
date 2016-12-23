@@ -41,7 +41,7 @@ namespace ThreadableQueueTest
             pntCnt.Execute();
             timer.Stop();
             alph = pntCnt.AlphCounter;
-
+            
         }
 
         static void Main(string[] args)
@@ -49,11 +49,13 @@ namespace ThreadableQueueTest
             timer = new Stopwatch();
 
             bool cont = true;
-            string file = "C:\\Users\\U460624\\Desktop\\New Text Document.txt";
+            string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            //string file = "C:\\Users\\U460624\\Desktop\\New Text Document.txt";
+            string file = desktop+"\\New Text Document.txt";
 
             while (cont) {
-                MainThreaded(file);
-                //MainNormal(file);
+                //MainThreaded(file);
+                MainNormal(file);
 
                 Console.WriteLine("Finished...");
                 Console.WriteLine("Lor count: " + alph.cnt_Lor);
@@ -70,15 +72,15 @@ namespace ThreadableQueueTest
                 string again = Console.ReadLine();
                 if (again == "1")
                 {
-                    file = "C:\\Users\\U460624\\Desktop\\New Text Document.txt";
+                    file = desktop+"\\New Text Document.txt";
                 }
                 else if (again == "2")
                 {
-                    file = "C:\\Users\\U460624\\Desktop\\New Text Document - Copy.txt";
+                    file = desktop+"\\New Text Document - Copy.txt";
                 }
                 else if (again == "3")
                 {
-                    file = "C:\\Users\\U460624\\Desktop\\New Text Document (2).txt";
+                    file = desktop+"\\New Text Document (2).txt";
                 }
                 else
                 {
