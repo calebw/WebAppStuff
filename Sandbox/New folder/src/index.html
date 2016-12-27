@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="bundle.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+	
+	<script src="http://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body ng-controller="MainCtrl">
+	<div class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">Markup Project</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-1" id="scoreDiv">
+				<button type="button" class="btn btn-default">Score File</button>
+			</div>
+			<div class="col-md-1"></div>
+			<div class="col-md-3" id="retrieveDiv">
+				<div id="dropScores">
+					<select id="scoreSel" style="width:100%"></select>
+				</div>
+				<button type="button" class="btn btn-default">Retrieve</button>
+			</div>
+			<div class="col-md-4" id="rangeDiv">
+				<input class="datepicker" data-date-format="mm/dd/yyyy">
+				<button type="button" class="btn btn-default">Retrieve Range</button>
+				<input class="datepicker" data-date-format="mm/dd/yyyy">
+			</div>
+			<div class="col-md-2" id="modesDiv">
+				<button type="button" class="btn btn-default">Min/Max</button>
+				<button type="button" class="btn btn-default">Average</button>
+			</div>
+		</div>
+	</div>
+
+<script src="all.js"></script>
+</body>
+</html>
