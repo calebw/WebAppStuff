@@ -32988,11 +32988,26 @@ module.exports = angular;
 },{"./angular":1}],3:[function(require,module,exports){
 module.exports = function($http) {
 	return {
-		getFileNames: getFileNames
+		getFileNames: getFileNames,
+		getTest: getTest
 	};
 
 	function getFileNames(){
 		return ["fileName1", "fileName2", "fileName3", "fileName4"];
+	}
+
+	function getTest(){
+		console.log("In getTest");
+		return $http.get('/getData').then(success).catch(error);
+
+		function success(res){
+			console.log("Success!");
+			console.log(res.data);
+			return res.data;
+		}
+		function error(error){
+			console.log("Error!");
+		}
 	}
 
 }
@@ -33000,6 +33015,26 @@ module.exports = function($http) {
 module.exports = function($scope, DataFact) {
 	//$scope.message = "Ok...";
 	$('#scoreSel').select2({data: DataFact.getFileNames()});
+
+	$scope.scoreFileClick = function(){
+		console.log("In Score File Click");
+	};
+	$scope.retrieveClick = function(){
+		console.log("In Retrieve Click");
+		DataFact.getTest().then(function(data){
+			console.log(data.names);
+			//$scope.test = data;
+		});
+	};
+	$scope.retrieveRangeClick = function(){
+		console.log("In Retrieve Range Click");
+	};
+	$scope.minMaxClick = function(){
+		console.log("In Min Max Click");
+	};
+	$scope.averageClick = function(){
+		console.log("In Average Click");
+	};
 }
 },{}],5:[function(require,module,exports){
 "use strict";

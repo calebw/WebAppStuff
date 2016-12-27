@@ -19,23 +19,23 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-1" id="scoreDiv">
-				<button type="button" class="btn btn-default">Score File</button>
+				<button ng-click="scoreFileClick();" type="button" class="btn btn-default">Score File</button>
 			</div>
 			<div class="col-md-1"></div>
 			<div class="col-md-3" id="retrieveDiv">
 				<div id="dropScores">
 					<select id="scoreSel" style="width:100%"></select>
 				</div>
-				<button type="button" class="btn btn-default">Retrieve</button>
+				<button ng-click="retrieveClick();" type="button" class="btn btn-default">Retrieve</button>
 			</div>
 			<div class="col-md-4" id="rangeDiv">
 				<input class="datepicker" data-date-format="mm/dd/yyyy">
-				<button type="button" class="btn btn-default">Retrieve Range</button>
+				<button ng-click="retrieveRangeClick();" type="button" class="btn btn-default">Retrieve Range</button>
 				<input class="datepicker" data-date-format="mm/dd/yyyy">
 			</div>
 			<div class="col-md-2" id="modesDiv">
-				<button type="button" class="btn btn-default">Min/Max</button>
-				<button type="button" class="btn btn-default">Average</button>
+				<button ng-click="minMaxClick();" type="button" class="btn btn-default">Min/Max</button>
+				<button ng-click="averageClick();" type="button" class="btn btn-default">Average</button>
 			</div>
 		</div>
 	</div>
