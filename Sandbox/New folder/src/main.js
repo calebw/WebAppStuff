@@ -1,6 +1,7 @@
 "use strict";
 
 require('angular');
+require('jquery');
 
 var MainCtrl = require('./MainCtrl');
 var DataFact = require('./DataFact');

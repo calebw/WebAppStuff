@@ -17,7 +17,10 @@ var paths = {port:3000,devBaseUrl:'http://localhost',
 	html: 'src/*.html',
 	js: 'src/main.js',
 	allJs: 'src/*.js',
+	vendor:['vendor/jquery.min.js', 'vendor/bootstrap.min.js', 
+		'vendor/select2.min.js', 'vendor/bootstrap-datepicker.min.js'],
 	css: 'src/*.css',
+	glyph: 'src/fonts/*.*',
 	out: 'dist'
 };
 
@@ -48,6 +51,17 @@ gulp.task('scripts', function(){
 	.pipe(gulp.dest(paths.out));
 });
 
+gulp.task('vendor',function(){
+	return gulp.src(paths.vendor)
+	.pipe(concat('vendor.js'))
+	.pipe(gulp.dest(paths.out));
+});
+
+gulp.task('glyph',function(){
+	return gulp.src(paths.glyph)
+	.pipe(gulp.dest(paths.out+'/fonts'));
+});
+
 gulp.task('css',function(){
 	return gulp.src(paths.css)
 	.pipe(concat('bundle.css'))
@@ -60,5 +74,6 @@ gulp.task('watch', function(){
 });
 
 gulp.task('build', ['scripts', 'html', 'css']);
+gulp.task('build-full', ['vendor', 'glyph', 'scripts', 'html', 'css']);
 
 gulp.task('default', ['watch', 'scripts', 'html', 'css', 'open']);

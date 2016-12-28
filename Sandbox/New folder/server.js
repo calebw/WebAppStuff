@@ -2,7 +2,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-//var ScoreData = require('./ScoreData');
+var ScoreData = require('./ScoreData');
 
 var app = express();
 
@@ -15,10 +15,12 @@ app.get('/', function(req,res){
 	res.sendFile(__dirname+"/index.html");
 });
 
-app.get('/getData', function(req,res){
+app.get('/getFileNames', function(req,res){
 	console.log("In Get Data");
-	res.send({names:"Some Data"});
-	//res.send(ScoreData.getScoreTest());
+	ScoreData.getUniqueIDs(function(err, rows){
+		console.log("After Get");
+		res.send(rows);
+	});
 });
 
 app.set('port', (process.env.PORT || 3000));

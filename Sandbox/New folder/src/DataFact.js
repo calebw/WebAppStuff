@@ -5,7 +5,15 @@ module.exports = function($http) {
 	};
 
 	function getFileNames(){
-		return ["fileName1", "fileName2", "fileName3", "fileName4"];
+		return $http.get('/getFileNames').then(success).catch(error);
+
+		function success(res){
+			console.log("Success! FileNames");
+			return res.data;
+		}
+		function error(error){
+			console.log("Error!");
+		}
 	}
 
 	function getTest(){
@@ -14,8 +22,7 @@ module.exports = function($http) {
 
 		function success(res){
 			console.log("Success!");
-			console.log(res.data);
-			return res.data;
+			return res;
 		}
 		function error(error){
 			console.log("Error!");
