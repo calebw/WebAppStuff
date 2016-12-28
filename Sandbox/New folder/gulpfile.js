@@ -18,8 +18,8 @@ var paths = {port:3000,devBaseUrl:'http://localhost',
 	js: 'src/main.js',
 	allJs: 'src/*.js',
 	vendor:['vendor/jquery.min.js', 'vendor/bootstrap.min.js', 
-		'vendor/select2.min.js', 'vendor/bootstrap-datepicker.min.js'],
-	css: 'src/*.css',
+		'vendor/select2.min.js', 'vendor/bootstrap-datepicker.min.js', 'vendor/toastr.min.js'],
+	css: ['vendor/*.css','src/*.css'],
 	glyph: 'src/fonts/*.*',
 	out: 'dist'
 };

@@ -1,8 +1,11 @@
-module.exports = function($scope, DataFact) {
+module.exports = function($scope, DataFact, FileScoreFact) {
 
 	$scope.init = function(){
-		$('#dateFrom').datepicker();
-		$('#dateTo').datepicker();
+		toastr.options.positionClass = "toast-bottom-right";
+
+		FileScoreFact.Initialize();
+		$('#dateFrom').datepicker({autoclose: true});
+		$('#dateTo').datepicker({autoclose: true});
 		refreshFileNameCombo();
 	};
 
@@ -19,14 +22,25 @@ module.exports = function($scope, DataFact) {
 
 	$scope.scoreFileClick = function(){
 		console.log("In Score File Click");
-		document.getElementById("filePicker").click();
+		var file = $('#filePicker')[0].files[0];
+		if(file) FileScoreFact.scoreFile(file)
 	};
 	$scope.retrieveClick = function(){
-		console.log($scope.fileNames);
 		console.log("In Retrieve Click");
+		var scoreFile = $('#scoreSel').val();
+		if(scoreFile) DataFact.getScoreFileData(scoreFile).then(function(rows){
+			//ToDo
+			console.log(rows.fake);
+		});
 	};
 	$scope.retrieveRangeClick = function(){
 		console.log("In Retrieve Range Click");
+		//$('#dateFrom').datepicker('getDate').toLocaleDateString()
+		var dFrom = $('#dateFrom').datepicker('getDate');
+		var dTo = $('#dateTo').datepicker('getDate');
+		if(dFrom && dTo) DataFact.getRangeData(dFrom, dTo).then(function(rows){
+			//ToDo
+		});
 	};
 	$scope.minMaxClick = function(){
 		console.log("In Min Max Click");

@@ -1,15 +1,17 @@
 "use strict";
 
 require('angular');
-require('jquery');
+require('toastr');
 
 var MainCtrl = require('./MainCtrl');
 var DataFact = require('./DataFact');
+var FileScoreFact = require('./FileScoreFact');
 
 var app = angular.module('app', []);
 
 app.factory('DataFact', ['$http', DataFact]);
-app.controller('MainCtrl', ['$scope', 'DataFact', MainCtrl]);
+app.factory('FileScoreFact', ['$http', FileScoreFact]);
+app.controller('MainCtrl', ['$scope', 'DataFact', 'FileScoreFact', MainCtrl]);
 
 /*var $ = require('jquery');
 
