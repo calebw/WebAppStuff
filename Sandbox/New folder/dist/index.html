@@ -3,23 +3,17 @@
 <head>
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="bundle.css">
-	
 	<script src="vendor.js"></script>
-	<!--<script src="../vendor/jquery-2.2.4.min.js"></script>-->
-	<!--<script src="http://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>-->
-	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>-->
-	<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
-</head>
 <body ng-controller="MainCtrl" ng-init="init()">
 	<div class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">Markup Project</div>
 		</div>
 	</div>
-	<div class="container">
+	<div class="container btn-header">
 		<div class="row">
 			<div class="col-md-2" id="scoreDiv">
-				<button ng-click="scoreFileClick();" type="button" class="btn btn-default">Score File</button>
+				<button ng-click="scoreFileClick();" type="button" class="btn btn-primary">Score File</button>
 				<input type="file" accept=".html" id="filePicker">
 			</div>
 			<div class="col-md-1"></div>
@@ -27,7 +21,7 @@
 				<div id="dropScores">
 					<select id="scoreSel" style="width:100%"></select>
 				</div>
-				<button ng-click="retrieveClick();" type="button" class="btn btn-default">Retrieve</button>
+				<button ng-click="retrieveClick();" type="button" class="btn btn-primary">Retrieve</button>
 			</div>
 			<div class="col-md-4" id="rangeDiv">
 				<div class='input-group date' id='dateFrom'>
@@ -36,7 +30,7 @@
 	                    <span class="glyphicon glyphicon-calendar"></span>
 	                </span>
             	</div>
-				<button ng-click="retrieveRangeClick();" type="button" class="btn btn-default">Retrieve Range</button>
+				<button ng-click="retrieveRangeClick();" type="button" class="btn btn-primary">Retrieve Range</button>
 				<div class='input-group date' id='dateTo'>
 	                <input type='text' class="form-control" />
 	                <span class="input-group-addon">
@@ -45,11 +39,17 @@
             	</div>
 			</div>
 			<div class="col-md-2" id="modesDiv">
-				<button ng-click="minMaxClick();" type="button" class="btn btn-default">Min/Max</button>
-				<button ng-click="averageClick();" type="button" class="btn btn-default">Average</button>
+				<button ng-click="minMaxClick();" type="button" class="btn btn-primary">Min/Max</button>
+				<button ng-click="averageClick();" type="button" class="btn btn-primary">Average</button>
 			</div>
 		</div>
 	</div>
+	<div class="container">
+		<div class="row">
+			<div ui-grid="gridOptions" class="dataGrid"></div>
+		</div>
+	</div>
+	
 
 <script src="all.js"></script>
 </body>

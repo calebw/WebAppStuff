@@ -5,3 +5,17 @@
 	width: 50%;
 	display: inline-table;
 }
+.dataGrid {
+	width: 100%;
+}
+.btn-header {
+	padding-top: 8px;
+	border: 1px solid #2e6da4;
+}
+@font-face {
+  font-family: 'ui-grid';
+  src: url('../fonts/ui-grid.woff');
+  src: url('../fonts/ui-grid.woff') format('woff'), url('../fonts/ui-grid.ttf?') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

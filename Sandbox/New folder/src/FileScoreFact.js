@@ -1,22 +1,25 @@
-module.exports = function($http) {
+module.exports = function($http, $q) {
 	//Used for anything to do with scoring a file
 	return {
 		Initialize: Initialize,
 		scoreFile: scoreFile
 	};
 
+	//Reference for points given a tag
 	var tagPoints = {};
+	//The regex used to match tags
 	var tagPattern;
 
 	function Initialize(){
+		//Retrieve object holding tags and respective points
 		return $http.get('/getTagPoints').then(success).catch(error);
 
 		function success(res){
 			console.log("Success! TagPoints");
 			tagPoints = res.data;
 			tagPattern = '';
+			//Dynamically create regex pattern based on tags
 			$.each(tagPoints, function(key, val){
-				//console.log("<"+ key+ "[>|\s]|");
 				tagPattern = tagPattern.concat("<", key, "[>|\\s]|");
 			});
 			//Cut off trailing |
@@ -29,37 +32,37 @@ module.exports = function($http) {
 	}
 
 	function scoreFile(file){
-		console.log(file);
+		//console.log(file);
+		var def = $q.defer();
 		var reader = new FileReader();
 		reader.onload = function(){
 			var lines = this.result.split('\r\n');
 			var score = 0;
 			var regEx = new RegExp(tagPattern, 'gi');
-			console.log(lines);
+			//Calculate Score
+			//For each line...
 			$.each(lines, function(index, item){
 				var matches = item.match(regEx);
+				//get each match...
 				$.each(matches, function(ndx, match){
+					//and sum.
 					score += getTagPoint(match);
 				});
 			});
-			saveScore(score, file.name.substring(0, file.name.lastIndexOf('.')));
+			//Persist to DB
+			saveScore(def, score, file.name.substring(0, file.name.lastIndexOf('.')));
 		};
-		if(file.name.substring(file.name.lastIndexOf('.')+1) != 'html'){
-			alert("This isn't an html file");
-		} else if(file.name.indexOf('_') == -1){
-			alert("Invalid File Name");
-		} else{
-			reader.readAsText(file);
-		}
+		reader.readAsText(file);
+		return def.promise;
 	}
 
 	//Get points for a match
 	function getTagPoint(match){
 		var tag = match.substring(1, match.length-1);
-		return tagPoints[tag];
+		return tagPoints[tag.toLowerCase()];
 	}
 
-	function saveScore(score, fileName){
+	function saveScore(def, score, fileName){
 		var scoreName = fileName.substring(0, fileName.indexOf('_'));
 		return $http({
 			url: '/saveScore',
@@ -70,10 +73,12 @@ module.exports = function($http) {
 		function success(res){
 			console.log("Success! SaveScore");
 			toastr.success("Score: "+res.data,"Score Success");
-			//alert("Score Saved: "+res.data);
+			def.resolve();
 		}
 		function error(error){
-			toastr.error(error, "Error! SaveScore");
+			console.log(error);
+			toastr.error(error.statusText, "Error! SaveScore");
+			def.reject();
 		}
 	}
 

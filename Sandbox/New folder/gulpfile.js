@@ -3,22 +3,21 @@
 var gulp = require('gulp'),
     connect = require('gulp-connect'),
     gutil = require('gulp-util'),
-    //htmlreplace = require('gulp-html-replace'),
     open = require('gulp-open'),
     concat = require('gulp-concat'),
     rename = require('gulp-rename'),
     uglify = require('gulp-uglify'),
     del = require('del'),
     browserify = require('browserify'),
-    source = require('vinyl-source-stream'),
-    buffer = require('vinyl-buffer');
+    source = require('vinyl-source-stream')
 
 var paths = {port:3000,devBaseUrl:'http://localhost',
 	html: 'src/*.html',
 	js: 'src/main.js',
 	allJs: 'src/*.js',
-	vendor:['vendor/jquery.min.js', 'vendor/bootstrap.min.js', 
-		'vendor/select2.min.js', 'vendor/bootstrap-datepicker.min.js', 'vendor/toastr.min.js'],
+	vendor:['vendor/jquery.min.js', 'vendor/bootstrap.min.js', 'vendor/angular.min.js',
+		'vendor/select2.min.js', 'vendor/bootstrap-datepicker.min.js', 
+		'vendor/toastr.min.js', 'vendor/ui-grid.min.js'],
 	css: ['vendor/*.css','src/*.css'],
 	glyph: 'src/fonts/*.*',
 	out: 'dist'
@@ -38,7 +37,6 @@ gulp.task('clean',function(){
 
 gulp.task('html',function(){
 	return gulp.src(paths.html)
-		//.pipe(gutil.env.TYPE==='prod' ? htmlreplace({'js':'js/all.min.js'}) : gutil.noop())
 		.pipe(gulp.dest(paths.out));
 });
 
@@ -47,7 +45,6 @@ gulp.task('scripts', function(){
 	.on('error',console.error.bind(console))
 	.bundle()
 	.pipe(source('all.js'))
-	.pipe(buffer())
 	.pipe(gulp.dest(paths.out));
 });
 

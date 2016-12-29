@@ -1,7 +1,9 @@
 var mysql = require("mysql");
 var con = {};
 
+//Open DB
 function open(){
+	//THIS IS WHERE YOU PUT YOUR MYSQL CREDENTIALS
 	con = mysql.createConnection({
 	  host: "localhost",
 	  user: "root",
@@ -17,6 +19,7 @@ function open(){
 	});
 }
 
+//Close DB
 function close(){
 	con.end(function(err){
 	  if(err){
@@ -37,12 +40,13 @@ var ScoreData={
 		con.query('SELECT DISTINCT FileName FROM scores',function(err,rows){
 		  if(err) {
 		  	console.log(err);
+		  	//Ha.
 		  	callback(err, [{FileName: "Database"},{FileName: "Not"},{FileName: "Connected"}]);
 		  	return;
 		  }
 
 		  console.log('Data received from Db:\n');
-		  console.log(rows);
+		  //console.log(rows);
 		  close();
 		  callback(err, rows);
 		});
@@ -50,7 +54,7 @@ var ScoreData={
 
 	getScoreFileData: function(scoreFile, callback){
 		open();
-		con.query('', function(err, rows){
+		con.query("SELECT KeyName, FileName, Score, RunDate FROM scores WHERE FileName='"+scoreFile+"'", function(err, rows){
 			if(err) {
 			  	console.log(err);
 			  	callback(err, []);
@@ -65,7 +69,7 @@ var ScoreData={
 
 	getRangeData: function(dateFrom, dateTo, callback){
 		open();
-		con.query('', function(err, rows){
+		con.query("SELECT KeyName, FileName, Score, RunDate FROM scores where RunDate > '"+dateFrom+"' AND RunDate <= '"+dateTo+"'", function(err, rows){
 			if(err) {
 			  	console.log(err);
 			  	callback(err, []);
@@ -78,11 +82,57 @@ var ScoreData={
 		});
 	},
 
+	getMinMaxData: function(callback){
+		open();
+		con.query('CALL spMinMax()',function(err,rows){
+		  if(err) {
+		  	console.log(err);
+		  	callback(err, []);
+		  	return;
+		  }
+
+		  console.log('MinMax Data received from Db:\n');
+		  close();
+		  callback(err, rows[0]);
+		});
+	},
+
+	getAverageData: function(callback){
+		open();
+		con.query('CALL spAverage()',function(err,rows){
+		  if(err) {
+		  	console.log(err);
+		  	callback(err, []);
+		  	return;
+		  }
+
+		  console.log('Average Data received from Db:\n');
+		  close();
+		  callback(err, rows[0]);
+		});
+	},
+
+	saveScore: function(score, fileName, scoreName, runDate, callback){
+		open();
+		con.query("INSERT INTO scores (FileName, KeyName, Score, RunDate) VALUES('"+fileName+"','"+scoreName+"',"+score+",'"+ runDate + "')", function(err){
+			if(err) {
+			  	console.log(err);
+			  	callback(err);
+			  	return;
+			  }
+
+		  console.log('Score Inserted into Db:\n');
+		  close();
+		  callback();
+		});
+	},
+
 	getTagPoints: function(){
 		return tagPoints;
 	}
 };
 
+//CHANGE THIS TO ALTER TAG POINTS
 var tagPoints = {
 	div: 3,
 	p: 1,
@@ -100,12 +150,5 @@ var tagPoints = {
     frameset: -5,
     frame: -5
 };
-
-/*var ScoreData = function(){
-	this.getScoreTest = function(){
-		console.log("In ScoreData");
-		return {names: "In ScoreTest!"};
-	};
-}*/
 
 module.exports = ScoreData;

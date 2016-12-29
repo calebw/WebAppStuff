@@ -7,14 +7,8 @@ var MainCtrl = require('./MainCtrl');
 var DataFact = require('./DataFact');
 var FileScoreFact = require('./FileScoreFact');
 
-var app = angular.module('app', []);
+var app = angular.module('app', ['ui.grid']);
 
 app.factory('DataFact', ['$http', DataFact]);
-app.factory('FileScoreFact', ['$http', FileScoreFact]);
+app.factory('FileScoreFact', ['$http', '$q', FileScoreFact]);
 app.controller('MainCtrl', ['$scope', 'DataFact', 'FileScoreFact', MainCtrl]);
-
-/*var $ = require('jquery');
-
-$(document).ready(function(){
-	$('#here').html("Here?");
-});*/

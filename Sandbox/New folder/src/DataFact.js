@@ -4,7 +4,8 @@ module.exports = function($http) {
 		getFileNames: getFileNames,
 		getScoreFileData: getScoreFileData,
 		getRangeData: getRangeData,
-		getTest: getTest
+		getMinMaxData: getMinMaxData,
+		getAverageData: getAverageData
 	};
 
 	//Returns score file names for dropdown
@@ -33,15 +34,17 @@ module.exports = function($http) {
 			return res.data;
 		}
 		function error(error){
-			toastr.error(error, "Error! Score File Data");
+			toastr.error(error.statusText, "Error! Score File Data");
+			return error.data;
 		}
 	}
 
+	//Returns scores for a specified date range
 	function getRangeData(dateFrom, dateTo){
 		return $http({
 			url: '/getRangeData',
 			method: "POST",
-			data: {dateFrom: dateFrom.toLocaleDateString(), dateTo: dateTo.toLocaleDateString()}
+			data: {dateFrom: dateFrom, dateTo: dateTo}
 		}).then(success).catch(error);
 
 		function success(res){
@@ -49,20 +52,36 @@ module.exports = function($http) {
 			return res.data;
 		}
 		function error(error){
-			toastr.error(error, "Error! Range Data");
+			toastr.error(error.statusText, "Error! Range Data");
+			return error.data;
 		}
 	}
 
-	function getTest(){
-		console.log("In getTest");
-		return $http.get('/getData').then(success).catch(error);
+	//Returns the Min and Max scores
+	function getMinMaxData(){
+		return $http.get('/getMinMaxData').then(success).catch(error);
 
 		function success(res){
-			console.log("Success!");
-			return res;
+			console.log("Success! MinMaxData");
+			return res.data;
 		}
 		function error(error){
-			toastr.error(error, "Error! Test");
+			toastr.error(error.statusText, "Error! MinMaxData");
+			return error.data;
+		}
+	}
+
+	//Returns Average of all score types
+	function getAverageData(){
+		return $http.get('/getAverageData').then(success).catch(error);
+
+		function success(res){
+			console.log("Success! AverageData");
+			return res.data;
+		}
+		function error(error){
+			toastr.error(error.statusText, "Error! AverageData");
+			return error.data;
 		}
 	}
 
