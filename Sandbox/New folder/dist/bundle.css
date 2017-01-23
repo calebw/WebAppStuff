@@ -34,6 +34,9 @@
 	padding-top: 8px;
 	border: 1px solid #2e6da4;
 }
+.btn-primary {
+	margin: 4px;
+}
 @font-face {
   font-family: 'ui-grid';
   src: url('../fonts/ui-grid.woff');

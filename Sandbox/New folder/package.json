@@ -10,8 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "angular": "^1.6.1",
-    "angular-ui-grid": "^4.0.1",
     "body-parser": "^1.15.2",
     "browserify": "^13.0.0",
     "cookie-parser": "^1.4.3",
@@ -26,7 +24,6 @@
     "gulp-util": "^3.0.7",
     "jquery": "^2.2.2",
     "mysql": "^2.12.0",
-    "toastr": "^2.1.2",
     "vinyl-source-stream": "^1.1.0"
   }
 }

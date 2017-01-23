@@ -91,7 +91,7 @@ app.post('/saveScore', function(req, res){
 			res.status(500).send();
 		}
 		else{
-			res.end(score+'');
+			res.end();
 		}
 	});
 });

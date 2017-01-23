@@ -40,21 +40,21 @@ module.exports = function($scope, DataFact, FileScoreFact) {
 	$scope.scoreFileClick = function(){
 		console.log("In Score File Click");
 		//Get score file
-		var file = $('#filePicker')[0].files[0];
-		//Check that it's html
-		if(file.name.substring(file.name.lastIndexOf('.')+1) != 'html'){
-			alert("This isn't an html file");
-			return;
-		//Check that it's name is properly formatted
-		} else if(file.name.indexOf('_') == -1){
-			alert("Invalid File Name");
-			return;
-		}
-		if(file) FileScoreFact.scoreFile(file).then(function(){
-			//Refresh drop down since new name may be added
-			refreshFileNameCombo();
+		$.each($('#filePicker')[0].files, function(ndx, file){
+			//Check that it's html
+			if(file.name.substring(file.name.lastIndexOf('.')+1) != 'html'){
+				alert("This isn't an html file: "+file.name);
+				return;
+			//Check that it's name is properly formatted
+			} else if(file.name.indexOf('_') == -1){
+				alert("Invalid File Name: "+file.name);
+				return;
+			}
+			if(file) FileScoreFact.scoreFile(file).then(function(){
+				//Refresh drop down since new name may be added
+				refreshFileNameCombo();
+			});
 		});
-
 	};
 	$scope.retrieveClick = function(){
 		console.log("In Retrieve Click");

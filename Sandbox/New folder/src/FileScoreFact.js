@@ -72,12 +72,12 @@ module.exports = function($http, $q) {
 
 		function success(res){
 			console.log("Success! SaveScore");
-			toastr.success("Score: "+res.data,"Score Success");
+			toastr.success("Score: "+score,"Score Success: "+fileName);
 			def.resolve();
 		}
 		function error(error){
 			console.log(error);
-			toastr.error(error.statusText, "Error! SaveScore");
+			toastr.error(error.statusText, "Error! SaveScore: "+fileName);
 			def.reject();
 		}
 	}

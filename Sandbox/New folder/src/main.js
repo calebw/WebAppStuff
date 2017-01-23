@@ -1,8 +1,5 @@
 "use strict";
 
-require('angular');
-require('toastr');
-
 var MainCtrl = require('./MainCtrl');
 var DataFact = require('./DataFact');
 var FileScoreFact = require('./FileScoreFact');
