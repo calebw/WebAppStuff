@@ -5,3 +5,4 @@ node_module
 target/
 bin/
 obj/
+Heroku/node-js-getting-started/.git
